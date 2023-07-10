@@ -1,0 +1,18 @@
+{
+  "name": "napi-demo-linux-arm-gnueabihf",
+  "version": "0.0.0",
+  "os": [
+    "linux"
+  ],
+  "cpu": [
+    "arm"
+  ],
+  "main": "napi-demo.linux-arm-gnueabihf.node",
+  "files": [
+    "napi-demo.linux-arm-gnueabihf.node"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">= 10"
+  }
+}
