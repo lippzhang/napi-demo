@@ -252,6 +252,27 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { sum } = nativeBinding
+const { sum, DEFAULT_COST, Animal, Kind, coolFunction, getUndefined, log, getNull, getEnv, read, isGood, keys, createObj, logPackageName, readPackageJson, arrLen, getTupleArray, vecLen, getNums, convertU32Array, createExternalTypedArray, mutateTypedArray } = nativeBinding
 
 module.exports.sum = sum
+module.exports.DEFAULT_COST = DEFAULT_COST
+module.exports.Animal = Animal
+module.exports.Kind = Kind
+module.exports.coolFunction = coolFunction
+module.exports.getUndefined = getUndefined
+module.exports.log = log
+module.exports.getNull = getNull
+module.exports.getEnv = getEnv
+module.exports.read = read
+module.exports.isGood = isGood
+module.exports.keys = keys
+module.exports.createObj = createObj
+module.exports.logPackageName = logPackageName
+module.exports.readPackageJson = readPackageJson
+module.exports.arrLen = arrLen
+module.exports.getTupleArray = getTupleArray
+module.exports.vecLen = vecLen
+module.exports.getNums = getNums
+module.exports.convertU32Array = convertU32Array
+module.exports.createExternalTypedArray = createExternalTypedArray
+module.exports.mutateTypedArray = mutateTypedArray
