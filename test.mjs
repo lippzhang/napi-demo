@@ -1,4 +1,4 @@
-import { sum, DEFAULT_COST, Animal, read, getEnv } from './index.js'
+import { sum, DEFAULT_COST, Animal, read, getEnv, callThreadsafeFunction, read2 } from './index.js'
  
 console.log('From native', sum(40, 2))
 console.log('From native DEFAULT_COST =>', DEFAULT_COST)
@@ -16,3 +16,14 @@ console.log('a2:', a2)
 // console.log('From native =>',getEnv(null))
 process.env.production = "lippzhang"
 console.log('getEnv From native =>',getEnv('production'))
+
+const cb = (err, result) => { 
+  console.log(err, result)
+}
+// callThreadsafeFunction(cb)
+read2({
+  name: 'lippzh',
+  nameFn: (error, string) => {
+    console.log(error, string)
+  }
+})

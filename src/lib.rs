@@ -1,9 +1,17 @@
 #![deny(clippy::all)]
 
 use std::collections::HashMap;
+use std::thread;
+ 
+use napi::{
+  bindgen_prelude::*,
+  threadsafe_function::{ErrorStrategy, ThreadsafeFunction, ThreadsafeFunctionCallMode},
+};
+ 
 
 use napi::Either;
 use napi::Env;
+use napi::JsFunction;
 use napi::bindgen_prelude::Array;
 use napi::bindgen_prelude::Float32Array;
 use napi::bindgen_prelude::Null;
@@ -83,12 +91,55 @@ pub struct TypeDemo {
   pub name: String,
 }
 
+
 #[napi]
 fn read(value: Either<String, TypeDemo>) -> String {
   match value {
       Either::A(native) => native,
       Either::B(_value) => _value.name,
   }
+}
+
+#[napi(object)]
+struct  fnObject {
+  pub name: String,
+  #[napi(ts_type = "(error, string) => string")]
+  pub nameFn: JsFunction,
+}
+
+#[napi]
+fn read2(value: Either<String, fnObject>) ->  Result<()> {
+  match value {
+      Either::A(native) =>  Ok(()),
+      Either::B(_value) => {
+        let tsfn: ThreadsafeFunction<u32, ErrorStrategy::CalleeHandled> = _value.nameFn
+        .create_threadsafe_function(0, |ctx| {
+          ctx.env.create_uint32(ctx.value + 1).map(|v| vec![v])
+        })?;
+      for n in 0..100 {
+        let tsfn = tsfn.clone();
+        thread::spawn(move || {
+          tsfn.call(Ok(n), ThreadsafeFunctionCallMode::Blocking);
+        });
+      }
+      Ok(())
+      },
+    }
+}
+
+#[napi]
+pub fn call_threadsafe_function(callback: JsFunction) -> Result<()> {
+  let tsfn: ThreadsafeFunction<u32, ErrorStrategy::CalleeHandled> = callback
+    .create_threadsafe_function(0, |ctx| {
+      ctx.env.create_uint32(ctx.value + 1).map(|v| vec![v])
+    })?;
+  for n in 0..100 {
+    let tsfn = tsfn.clone();
+    thread::spawn(move || {
+      tsfn.call(Ok(n), ThreadsafeFunctionCallMode::Blocking);
+    });
+  }
+  Ok(())
 }
 
 #[napi]

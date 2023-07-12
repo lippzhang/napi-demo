@@ -19,6 +19,12 @@ export interface TypeDemo {
   name: string
 }
 export function read(value: string | TypeDemo): string
+export interface FnObject {
+  name: string
+  nameFn: (error, string) => string
+}
+export function read2(value: string | FnObject): void
+export function callThreadsafeFunction(callback: (...args: any[]) => any): void
 export function isGood(): boolean
 export function keys(obj: object): Array<string>
 export function createObj(): object

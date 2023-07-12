@@ -252,7 +252,7 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { sum, DEFAULT_COST, Animal, Kind, coolFunction, getUndefined, log, getNull, getEnv, read, isGood, keys, createObj, logPackageName, readPackageJson, arrLen, getTupleArray, vecLen, getNums, convertU32Array, createExternalTypedArray, mutateTypedArray } = nativeBinding
+const { sum, DEFAULT_COST, Animal, Kind, coolFunction, getUndefined, log, getNull, getEnv, read, read2, callThreadsafeFunction, isGood, keys, createObj, logPackageName, readPackageJson, arrLen, getTupleArray, vecLen, getNums, convertU32Array, createExternalTypedArray, mutateTypedArray } = nativeBinding
 
 module.exports.sum = sum
 module.exports.DEFAULT_COST = DEFAULT_COST
@@ -264,6 +264,8 @@ module.exports.log = log
 module.exports.getNull = getNull
 module.exports.getEnv = getEnv
 module.exports.read = read
+module.exports.read2 = read2
+module.exports.callThreadsafeFunction = callThreadsafeFunction
 module.exports.isGood = isGood
 module.exports.keys = keys
 module.exports.createObj = createObj
