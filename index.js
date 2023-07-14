@@ -252,7 +252,7 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { sum, DEFAULT_COST, Animal, Kind, coolFunction, getUndefined, log, getNull, getEnv, read, read2, callThreadsafeFunction, isGood, keys, createObj, logPackageName, readPackageJson, arrLen, getTupleArray, vecLen, getNums, convertU32Array, createExternalTypedArray, mutateTypedArray } = nativeBinding
+const { DEFAULT_COST, sum, Animal, Kind, coolFunction, getUndefined, log, getNull, getEnv, read, read2, isGood, keys, createObj, logPackageName, readPackageJson, arrLen, getTupleArray, vecLen, getNums, convertU32Array, createExternalTypedArray, mutateTypedArray, PathData, callThreadsafeFunction2, callThreadsafeFunction, callLongThreadsafeFunction, threadsafeFunctionThrowError, threadsafeFunctionFatalMode, threadsafeFunctionFatalModeError, threadsafeFunctionClosureCapture, tsfnCallWithCallback, tsfnAsyncCall, acceptThreadsafeFunction, acceptThreadsafeFunctionFatal, acceptThreadsafeFunctionTupleArgs, tsfnReturnPromise, tsfnReturnPromiseTimeout, tsfnThrowFromJs, runScript } = nativeBinding
 
 module.exports.sum = sum
 module.exports.DEFAULT_COST = DEFAULT_COST
@@ -265,7 +265,6 @@ module.exports.getNull = getNull
 module.exports.getEnv = getEnv
 module.exports.read = read
 module.exports.read2 = read2
-module.exports.callThreadsafeFunction = callThreadsafeFunction
 module.exports.isGood = isGood
 module.exports.keys = keys
 module.exports.createObj = createObj
@@ -278,3 +277,20 @@ module.exports.getNums = getNums
 module.exports.convertU32Array = convertU32Array
 module.exports.createExternalTypedArray = createExternalTypedArray
 module.exports.mutateTypedArray = mutateTypedArray
+module.exports.PathData = PathData
+module.exports.callThreadsafeFunction2 = callThreadsafeFunction2
+module.exports.callThreadsafeFunction = callThreadsafeFunction
+module.exports.callLongThreadsafeFunction = callLongThreadsafeFunction
+module.exports.threadsafeFunctionThrowError = threadsafeFunctionThrowError
+module.exports.threadsafeFunctionFatalMode = threadsafeFunctionFatalMode
+module.exports.threadsafeFunctionFatalModeError = threadsafeFunctionFatalModeError
+module.exports.threadsafeFunctionClosureCapture = threadsafeFunctionClosureCapture
+module.exports.tsfnCallWithCallback = tsfnCallWithCallback
+module.exports.tsfnAsyncCall = tsfnAsyncCall
+module.exports.acceptThreadsafeFunction = acceptThreadsafeFunction
+module.exports.acceptThreadsafeFunctionFatal = acceptThreadsafeFunctionFatal
+module.exports.acceptThreadsafeFunctionTupleArgs = acceptThreadsafeFunctionTupleArgs
+module.exports.tsfnReturnPromise = tsfnReturnPromise
+module.exports.tsfnReturnPromiseTimeout = tsfnReturnPromiseTimeout
+module.exports.tsfnThrowFromJs = tsfnThrowFromJs
+module.exports.runScript = runScript

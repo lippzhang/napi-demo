@@ -34,6 +34,7 @@
   },
   "scripts": {
     "artifacts": "napi artifacts",
+    "d": "node test.mjs",
     "build": "napi build --platform --release",
     "build:debug": "napi build --platform",
     "prepublishOnly": "napi prepublish -t npm",
